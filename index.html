@@ -422,7 +422,8 @@ div.tocify {
 var FULL_WIDTH_MARGIN_SIDE = 60;
 var $body = $(document.body);
 var screenWidth = $body.width();
-var openOnDesktop = window.location.href.indexOf("desktop=true") > -1; 
+var openOnDesktop = window.location.href.indexOf("desktop=true") > -1;
+openOnDesktop = true;
 var openInLocal = window.location.href.startsWith("file:"); 
 var enableChartDataDownload = !openInLocal && !openOnDesktop && window.parent && window.parent.document && !!window.parent.document.querySelector('input#enable-csv-download');
 var enableChartImageDownload = !openInLocal && !openOnDesktop;
@@ -584,12 +585,14 @@ var screenHeight = $(window).height();
 // height is shorter than the actual screen size so we need to adjust it.
 // Accessing the parent fails if you open it locally (including opening on desktop) 
 // because of the cross origin so just to check. 
+/*
 if (!/^file:/.test(window.location.href)) {
   var offset = $(window.parent.document).find("iframe.markdown-content-frame").offset();
   if (offset && offset.top) {
     screenHeight+=offset.top;
   }
 }
+*/
 
 
 // Capturing charts/analytics snapshot images for Word output and 
